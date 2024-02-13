@@ -31,6 +31,7 @@ export const LayerPreview = memo(
             selectionColor={selectionColor}
           />
         );
+      // TODO: Fix default case always being executed, even with a matching case returning before it.
       default:
         console.warn("Unknown layer type");
         return null;
