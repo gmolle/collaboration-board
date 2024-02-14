@@ -405,6 +405,9 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         // case "Backspace":
         //   deleteLayers();
         //   break;
+        case "Delete":
+          deleteLayers();
+          break;
         case "z": {
           if (e.ctrlKey || e.metaKey) {
             history.undo();
@@ -419,6 +422,10 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         }
         case "Escape": {
           unselectLayers();
+          break;
+        }
+        case "p": {
+          setCanvasState({ mode: CanvasMode.Pencil });
           break;
         }
         default:
