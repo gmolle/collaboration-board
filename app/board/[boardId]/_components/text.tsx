@@ -54,11 +54,12 @@ export const Text = ({
       }}
     >
       <ContentEditable
-        html={value || "text"}
+        html={value === "" || value === undefined ? "" : value!}
         onChange={handleContentChange}
         className={cn(
           "h-full w-full flex items-center justify-center text-center drop-shadow-md outline-none",
-          font.className
+          font.className,
+          value?.length! <= 0 && "border border-neutral-400"
         )}
         style={{
           color: fill ? colorToCss(fill) : "#000",

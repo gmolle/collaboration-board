@@ -56,7 +56,7 @@ export const Note = ({
       className="shadow-md drop-shadow-xl"
     >
       <ContentEditable
-        html={value || "text"}
+        html={value === "" || value === undefined ? "" : value!}
         onChange={handleContentChange}
         className={cn(
           "h-full w-full flex items-center justify-center text-center outline-none",
