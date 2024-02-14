@@ -69,6 +69,3 @@ export const Text = ({
     </foreignObject>
   );
 };
-
-// TODO: allow text to be fully removed with backspace, instead of having to select all text to replace the word "text"
-// TODO: add border around layer if there is no text so that the user does not lose the empty text layer

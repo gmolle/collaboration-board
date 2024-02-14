@@ -70,5 +70,3 @@ export const Note = ({
     </foreignObject>
   );
 };
-
-// TODO: allow text to be fully removed with backspace, instead of having to select all text to replace the word "text"
