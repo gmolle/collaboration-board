@@ -3,7 +3,7 @@
 import { Info } from "./info";
 import { Participants } from "./participants";
 import { Toolbar } from "./toolbar";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState, useEffect } from "react";
 import {
   Camera,
   CanvasMode,
@@ -39,6 +39,7 @@ import { SelectionBox } from "./selection-box";
 import { SelectionTools } from "./selection-tools";
 import { Path } from "./path";
 import { useDisableScrollBounce } from "@/hooks/use-disable-scroll-bounce";
+import { useDeleteLayers } from "@/hooks/use-delete-layers";
 
 const MAX_LAYERS = 100;
 const SELECTION_NET_THRESHOLD = 5;
@@ -394,6 +395,43 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 
     return layerIdsToColorSelection;
   }, [selections]);
+
+  const deleteLayers = useDeleteLayers();
+
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      switch (e.key) {
+        // TODO: Allow users to delete layers with backspace, but also still allow backspace to remove text without deleting the layer
+        // case "Backspace":
+        //   deleteLayers();
+        //   break;
+        case "z": {
+          if (e.ctrlKey || e.metaKey) {
+            history.undo();
+            break;
+          }
+        }
+        case "y": {
+          if (e.ctrlKey || e.metaKey) {
+            history.redo();
+            break;
+          }
+        }
+        case "Escape": {
+          unselectLayers();
+          break;
+        }
+        default:
+          break;
+      }
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [deleteLayers, history]);
 
   return (
     <main className="h-full w-full relative bg-neutral-100 touch-none">
