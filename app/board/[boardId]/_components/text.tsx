@@ -59,7 +59,7 @@ export const Text = ({
         className={cn(
           "h-full w-full flex items-center justify-center text-center drop-shadow-md outline-none",
           font.className,
-          value?.length! <= 0 && "border border-neutral-400"
+          (value?.length! <= 0 || !value) && "border border-neutral-400"
         )}
         style={{
           color: fill ? colorToCss(fill) : "#000",
