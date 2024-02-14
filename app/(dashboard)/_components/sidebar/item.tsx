@@ -29,6 +29,7 @@ export const Item = ({ id, name, imageUrl }: ItemProps) => {
       <Hint label={name} side="right" align="start" sideOffset={18}>
         <Image
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt={name}
           src={imageUrl}
           onClick={onClick}
