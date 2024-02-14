@@ -6,6 +6,9 @@ import { LayerType } from "@/types/canvas";
 import { useStorage } from "@/liveblocks.config";
 
 import { Rectangle } from "./rectangle";
+import { Ellipse } from "./ellipse";
+import { Text } from "./text";
+import { Note } from "./note";
 
 interface LayerPreviewProps {
   id: string;
@@ -31,10 +34,36 @@ export const LayerPreview = memo(
             selectionColor={selectionColor}
           />
         );
-      // TODO: Fix default case always being executed, even with a matching case returning before it.
-      // default:
-      //   console.warn("Unknown layer type");
-      //   return null;
+      case LayerType.Ellipse:
+        return (
+          <Ellipse
+            id={id}
+            layer={layer}
+            onPointerDown={onLayerPointerDown}
+            selectionColor={selectionColor}
+          />
+        );
+      case LayerType.Text:
+        return (
+          <Text
+            id={id}
+            layer={layer}
+            onPointerDown={onLayerPointerDown}
+            selectionColor={selectionColor}
+          />
+        );
+      case LayerType.Note:
+        return (
+          <Note
+            id={id}
+            layer={layer}
+            onPointerDown={onLayerPointerDown}
+            selectionColor={selectionColor}
+          />
+        );
+      default:
+        console.warn("Unknown layer type");
+        return null;
     }
   }
 );
