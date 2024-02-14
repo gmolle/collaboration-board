@@ -264,7 +264,6 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     [history]
   );
 
-  // TODO: Try and figure out why horizontal scrolling, by holding shift, doesn't move the camera horizontally
   const onWheel = useCallback((e: React.WheelEvent) => {
     setCamera((camera) => ({
       x: camera.x - e.deltaX,
@@ -401,10 +400,6 @@ export const Canvas = ({ boardId }: CanvasProps) => {
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       switch (e.key) {
-        // TODO: Allow users to delete layers with backspace, but also still allow backspace to remove text without deleting the layer
-        // case "Backspace":
-        //   deleteLayers();
-        //   break;
         case "Delete":
           deleteLayers();
           break;
