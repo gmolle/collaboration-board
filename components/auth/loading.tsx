@@ -1,15 +1,14 @@
-import Image from "next/image";
+import { Triangle } from "react-loader-spinner";
 
 export const Loading = () => {
   return (
     <div className="h-full w-full flex flex-col justify-center items-center">
-      <Image
-        priority
-        src="/logo.svg"
-        alt="logo"
-        width={120}
-        height={120}
-        className="animate-pulse duration-700"
+      <Triangle
+        visible={true}
+        height="120"
+        width="120"
+        color="#db4412"
+        ariaLabel="triangle-loading"
       />
     </div>
   );
