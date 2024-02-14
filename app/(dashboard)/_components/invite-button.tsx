@@ -3,6 +3,8 @@ import { OrganizationProfile } from "@clerk/nextjs";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
+const idealWidth = `max(880px, 25%)`;
+
 export const InviteButton = () => {
   return (
     <Dialog>
@@ -12,7 +14,10 @@ export const InviteButton = () => {
           Invite Members
         </Button>
       </DialogTrigger>
-      <DialogContent className="p-0 bg-transparent border-none max-w-[880px]">
+      <DialogContent
+        className="p-0 bg-transparent border-none z-[101]"
+        style={{ maxWidth: idealWidth }}
+      >
         <OrganizationProfile />
       </DialogContent>
     </Dialog>
