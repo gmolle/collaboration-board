@@ -1,3 +1,4 @@
+"use client";
 import { Triangle } from "react-loader-spinner";
 
 export const Loading = () => {
