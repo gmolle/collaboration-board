@@ -1,8 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Testing Deployed App
 
-## Getting Started
+- Visit [app](https://collaboration-board-gmolle.vercel.app/)
+- Create an account, sign in with Google, or sign in with test admin account:
+  - Email: admin@gmail.com
+  - Password: admin123
+- Create or join an organization (admin account is already in one to make it easier for you)
+- Create a board and visit it (can visit the already created one in admin account)
+- I recommend opening the app in a second browser or in an incognito window so you can have two users in the same board at the same time to view the real time updates
 
-First, run the development server:
+## Running App Locally
+
+Install Dependencies
+
+```bash
+npm install
+```
+
+Run the development server
 
 ```bash
 npm run dev
@@ -14,23 +28,20 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run The Convex DB
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npx convex dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+You will also need to create free accounts on [Convex](https://www.convex.dev/), [Clerk](https://clerk.com/), and [Liveblocks](https://liveblocks.io/) and follow the documentation to create your api keys. Then create the following environment variables in your `.env` file
 
-## Learn More
+```bash
+CONVEX_DEPLOYMENT=
+NEXT_PUBLIC_CONVEX_URL=
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+LIVEBLOCKS_SECRET_KEY=
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Open [http://localhost:3000](http://localhost:3000)
